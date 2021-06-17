@@ -1,0 +1,94 @@
+.module {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 280px;
+  padding-right: 20px;
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  position: relative;
+}
+
+.user .name {
+  margin-right: 12px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.user .signInOut {
+  display: none;
+}
+
+.user:hover .signInOut {
+  display: block;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  background: url(./user.png) #555;
+  background-size: cover;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 60px;
+  height: 60px;
+}
+
+.signInOut {
+  position: absolute;
+  box-sizing: border-box;
+  width: 200px;
+  padding: 14px;
+  bottom: -68px;
+  right: 0px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.signInOut::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  position: absolute;
+  top: -4px;
+  right: 25px;
+  transform: rotate(45deg);
+}
+
+.signInOut button {
+  width: 100%;
+}
+
+.description {
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.description button {
+  padding: 1em 2em;
+  color: #fff;
+  background-color: #0366d6;
+  border: none;
+  border-radius: 5px;
+}
+
+.name {
+  margin: 0;
+  font-size: 21px;
+}
+
+.email {
+  font-size: 12px;
+}

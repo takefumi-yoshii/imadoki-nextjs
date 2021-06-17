@@ -1,0 +1,22 @@
+.module {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-bottom: 32px;
+}
+
+.description {
+  margin-bottom: 32px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.button {
+  padding: 1em 2em;
+  color: #fff;
+  background-color: #0366d6;
+  border: none;
+  border-radius: 5px;
+}

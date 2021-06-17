@@ -1,0 +1,17 @@
+.module {
+  min-width: 434px;
+  margin-bottom: 0;
+  padding: 32px;
+  line-height: 0;
+  font-size: 28px;
+  color: #fff;
+}
+
+.module a {
+  color: #c4c4c4;
+}
+
+.module a:hover {
+  color: #fff;
+  text-decoration: none;
+}

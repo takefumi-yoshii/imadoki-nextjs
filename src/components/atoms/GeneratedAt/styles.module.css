@@ -1,0 +1,8 @@
+.generatedAt {
+  padding: 1em;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  background: #000;
+}

@@ -1,0 +1,31 @@
+.module {
+  display: flex;
+}
+
+.avatar {
+  width: 230px;
+  height: 230px;
+  border-radius: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 230px;
+  height: 230px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 32px;
+}
+
+.description h3 {
+  margin-bottom: 24px;
+}
+
+.description p {
+  margin-bottom: 4px;
+}

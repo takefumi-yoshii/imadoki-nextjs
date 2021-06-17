@@ -1,0 +1,14 @@
+.module {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-bottom: 32px;
+}
+
+.description {
+  margin-bottom: 32px;
+  line-height: 1.6;
+  text-align: center;
+}

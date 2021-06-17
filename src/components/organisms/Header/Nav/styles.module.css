@@ -1,0 +1,26 @@
+.module {
+  width: 100%;
+}
+
+.module ul {
+  display: flex;
+  height: 80px;
+}
+
+.module li {
+  list-style: none;
+}
+
+.module a {
+  display: block;
+  height: 80px;
+  padding: 0 24px;
+  line-height: 80px;
+  font-size: 18px;
+  color: #c4c4c4;
+}
+
+.module a:hover {
+  color: #fff;
+  text-decoration: none;
+}
