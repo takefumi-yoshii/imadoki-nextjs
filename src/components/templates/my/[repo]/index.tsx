@@ -10,10 +10,7 @@ type Props = {
 };
 // ___________________________________________________________________________
 //
-export function Template({
-  repo,
-  commits,
-}: Props) {
+export function Template({ repo, commits }: Props) {
   return (
     <div>
       <Link href="/my">

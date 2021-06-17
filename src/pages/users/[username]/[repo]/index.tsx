@@ -5,10 +5,7 @@ import Error from "@/pages/_error";
 import { now } from "@/utils/date";
 import { octokit } from "@/utils/fetcher";
 import type { Endpoints } from "@octokit/types";
-import type {
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-} from "next";
+import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 // ___________________________________________________________________________
@@ -20,9 +17,7 @@ export const getStaticPaths = async () => {
 //
 type StaticProps = {
   repo: {
-    data:
-      | Endpoints["GET /repos/{owner}/{repo}"]["response"]["data"]
-      | null;
+    data: Endpoints["GET /repos/{owner}/{repo}"]["response"]["data"] | null;
   };
   commits: {
     data:
@@ -32,14 +27,10 @@ type StaticProps = {
   err: { status: number; message: string } | null;
   generatedAt: string;
 };
-type PageProps = InferGetStaticPropsType<
-  typeof getStaticProps
->;
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 // ___________________________________________________________________________
 //
-const propsFactory = (
-  injects?: Partial<StaticProps>
-) => ({
+const propsFactory = (injects?: Partial<StaticProps>) => ({
   props: {
     repo: { data: null },
     commits: { data: null },
@@ -51,15 +42,10 @@ const propsFactory = (
 });
 // ___________________________________________________________________________
 //
-export const getStaticProps = async (
-  context: GetStaticPropsContext
-) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const owner = context.params?.username;
   const repo = context.params?.repo;
-  if (
-    typeof owner !== "string" ||
-    typeof repo !== "string"
-  ) {
+  if (typeof owner !== "string" || typeof repo !== "string") {
     return propsFactory({
       err: {
         status: 400,
@@ -70,14 +56,8 @@ export const getStaticProps = async (
   try {
     const param = { owner, repo };
     const res = await Promise.all([
-      octokit.request(
-        "GET /repos/{owner}/{repo}",
-        param
-      ),
-      octokit.request(
-        "GET /repos/{owner}/{repo}/commits",
-        param
-      ),
+      octokit.request("GET /repos/{owner}/{repo}", param),
+      octokit.request("GET /repos/{owner}/{repo}/commits", param),
     ]);
     return propsFactory({
       repo: res[0],
@@ -94,34 +74,17 @@ export const getStaticProps = async (
 };
 // ___________________________________________________________________________
 //
-export default function Page({
-  repo,
-  commits,
-  err,
-  generatedAt,
-}: PageProps) {
+export default function Page({ repo, commits, err, generatedAt }: PageProps) {
   const router = useRouter();
   if (err) {
-    return (
-      <Error
-        statusCode={err.status}
-        title={err.message}
-      />
-    );
+    return <Error statusCode={err.status} title={err.message} />;
   }
-  if (
-    router.isFallback ||
-    !repo.data ||
-    !commits.data
-  ) {
+  if (router.isFallback || !repo.data || !commits.data) {
     return <Loading />;
   }
   return (
     <>
-      <Template
-        repo={repo.data}
-        commits={commits.data}
-      />
+      <Template repo={repo.data} commits={commits.data} />
       <GeneratedAt label={generatedAt} />
     </>
   );

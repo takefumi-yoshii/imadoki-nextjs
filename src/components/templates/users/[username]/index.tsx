@@ -17,10 +17,7 @@ export function Template({ user, repos }: Props) {
         <UserDescription user={user} />
       </section>
       <section className={styles.userRepos}>
-        <UserRepos
-          username={user.login}
-          repos={repos}
-        />
+        <UserRepos username={user.login} repos={repos} />
       </section>
     </div>
   );

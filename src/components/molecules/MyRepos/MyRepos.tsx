@@ -8,10 +8,7 @@ type Props = {
 };
 // ___________________________________________________________________________
 //
-export function MyRepos({
-  username,
-  repos,
-}: Props) {
+export function MyRepos({ username, repos }: Props) {
   return (
     <table>
       <thead>
@@ -31,10 +28,7 @@ export function MyRepos({
             <td>{repo.owner?.type}</td>
             <td>{repo.private ? "o" : "-"}</td>
             <td>
-              <Link
-                prefetch={false}
-                href={`/my/${repo.name}`}
-              >
+              <Link prefetch={false} href={`/my/${repo.name}`}>
                 <a>{repo.name}</a>
               </Link>
             </td>

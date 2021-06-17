@@ -2,10 +2,9 @@ function padzero(num: number, digit = 2) {
   return `0000000${num}`.slice(digit * -1);
 }
 export function now() {
-  const japanStandardTime = new Date().toLocaleString(
-    undefined,
-    { timeZone: "Asia/Tokyo" }
-  );
+  const japanStandardTime = new Date().toLocaleString(undefined, {
+    timeZone: "Asia/Tokyo",
+  });
   const date = new Date(japanStandardTime);
   const hours = padzero(date.getHours());
   const minutes = padzero(date.getMinutes());

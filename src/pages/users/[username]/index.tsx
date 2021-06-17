@@ -5,10 +5,7 @@ import Error from "@/pages/_error";
 import { now } from "@/utils/date";
 import { octokit } from "@/utils/fetcher";
 import type { Endpoints } from "@octokit/types";
-import type {
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-} from "next";
+import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 // ___________________________________________________________________________
@@ -20,26 +17,18 @@ export const getStaticPaths = async () => {
 //
 type StaticProps = {
   user: {
-    data:
-      | Endpoints["GET /users/{username}"]["response"]["data"]
-      | null;
+    data: Endpoints["GET /users/{username}"]["response"]["data"] | null;
   };
   repos: {
-    data:
-      | Endpoints["GET /users/{username}/repos"]["response"]["data"]
-      | null;
+    data: Endpoints["GET /users/{username}/repos"]["response"]["data"] | null;
   };
   err: { status: number; message: string } | null;
   generatedAt: string;
 };
-type PageProps = InferGetStaticPropsType<
-  typeof getStaticProps
->;
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 // ___________________________________________________________________________
 //
-const propsFactory = (
-  injects?: Partial<StaticProps>
-) => ({
+const propsFactory = (injects?: Partial<StaticProps>) => ({
   props: {
     user: { data: null },
     repos: { data: null },
@@ -51,9 +40,7 @@ const propsFactory = (
 });
 // ___________________________________________________________________________
 //
-export const getStaticProps = async (
-  context: GetStaticPropsContext
-) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const username = context.params?.username;
   if (typeof username !== "string") {
     return propsFactory({
@@ -66,14 +53,8 @@ export const getStaticProps = async (
   try {
     const param = { username };
     const res = await Promise.all([
-      octokit.request(
-        "GET /users/{username}",
-        param
-      ),
-      octokit.request(
-        "GET /users/{username}/repos",
-        param
-      ),
+      octokit.request("GET /users/{username}", param),
+      octokit.request("GET /users/{username}/repos", param),
     ]);
     return propsFactory({
       user: res[0],
@@ -90,34 +71,17 @@ export const getStaticProps = async (
 };
 // ___________________________________________________________________________
 //
-export default function Page({
-  user,
-  repos,
-  err,
-  generatedAt,
-}: PageProps) {
+export default function Page({ user, repos, err, generatedAt }: PageProps) {
   const router = useRouter();
   if (err) {
-    return (
-      <Error
-        statusCode={err.status}
-        title={err.message}
-      />
-    );
+    return <Error statusCode={err.status} title={err.message} />;
   }
-  if (
-    router.isFallback ||
-    !user.data ||
-    !repos.data
-  ) {
+  if (router.isFallback || !user.data || !repos.data) {
     return <Loading />;
   }
   return (
     <>
-      <Template
-        user={user.data}
-        repos={repos.data}
-      />
+      <Template user={user.data} repos={repos.data} />
       <GeneratedAt label={generatedAt} />
     </>
   );

@@ -11,15 +11,9 @@ type Props = {
 };
 // ___________________________________________________________________________
 //
-export function Template({
-  repo,
-  commits,
-}: Props) {
+export function Template({ repo, commits }: Props) {
   const { query } = useRouter();
-  const username =
-    typeof query.username !== "string"
-      ? ""
-      : query.username;
+  const username = typeof query.username !== "string" ? "" : query.username;
   return (
     <div>
       <Link href={`/users/${username}`}>

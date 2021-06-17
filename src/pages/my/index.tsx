@@ -14,26 +14,18 @@ import { getSession } from "next-auth/client";
 //
 type StaticProps = {
   user: {
-    data:
-      | Endpoints["GET /users/{username}"]["response"]["data"]
-      | null;
+    data: Endpoints["GET /users/{username}"]["response"]["data"] | null;
   };
   repos: {
-    data:
-      | Endpoints["GET /user/repos"]["response"]["data"]
-      | null;
+    data: Endpoints["GET /user/repos"]["response"]["data"] | null;
   };
   err: { status: number; message: string } | null;
   generatedAt: string;
 };
-type PageProps = InferGetServerSidePropsType<
-  typeof getServerSideProps
->;
+type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 // ___________________________________________________________________________
 //
-const propsFactory = (
-  injects?: Partial<StaticProps>
-) => ({
+const propsFactory = (injects?: Partial<StaticProps>) => ({
   props: {
     user: { data: null },
     repos: { data: null },
@@ -69,10 +61,7 @@ export const getServerSideProps = async (
     const param = { username };
     // プライベートリポジトリ情報も含めたリクエスト
     const res = await Promise.all([
-      octokit.request(
-        "GET /users/{username}",
-        param
-      ),
+      octokit.request("GET /users/{username}", param),
       octokit.request("GET /user/repos", {
         type: "owner",
       }),
@@ -92,28 +81,14 @@ export const getServerSideProps = async (
 };
 // ___________________________________________________________________________
 //
-export default function Page({
-  user,
-  repos,
-  err,
-  generatedAt,
-}: PageProps) {
+export default function Page({ user, repos, err, generatedAt }: PageProps) {
   if (err) {
-    return (
-      <Error
-        statusCode={err.status}
-        title={err.message}
-      />
-    );
+    return <Error statusCode={err.status} title={err.message} />;
   }
-  if (!user.data || !repos.data)
-    return <Loading />;
+  if (!user.data || !repos.data) return <Loading />;
   return (
     <>
-      <Template
-        user={user.data}
-        repos={repos.data}
-      />
+      <Template user={user.data} repos={repos.data} />
       <GeneratedAt label={generatedAt} />
     </>
   );

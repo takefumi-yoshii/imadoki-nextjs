@@ -17,21 +17,16 @@ export function RepoCommits({ commits }: Props) {
           </tr>
         </thead>
         <tbody>
-          {commits.map(
-            ({ sha, commit, html_url }) => (
-              <tr key={sha}>
-                <td>
-                  <a
-                    href={html_url}
-                    target="_blank"
-                  >
-                    {sha.slice(0, 7)}
-                  </a>
-                </td>
-                <td>{commit.message}</td>
-              </tr>
-            )
-          )}
+          {commits.map(({ sha, commit, html_url }) => (
+            <tr key={sha}>
+              <td>
+                <a href={html_url} target="_blank">
+                  {sha.slice(0, 7)}
+                </a>
+              </td>
+              <td>{commit.message}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

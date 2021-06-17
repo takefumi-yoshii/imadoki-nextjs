@@ -19,9 +19,7 @@ export function UserDescription({ user }: Props) {
         {user.email && <p>{user.email}</p>}
         {user.twitter_username && (
           <p>
-            <a
-              href={`https://twitter.com/${user.twitter_username}`}
-            >
+            <a href={`https://twitter.com/${user.twitter_username}`}>
               @{user.twitter_username}
             </a>
           </p>

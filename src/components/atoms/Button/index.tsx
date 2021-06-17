@@ -8,12 +8,6 @@ type Props = React.DetailedHTMLProps<
 >;
 // ___________________________________________________________________________
 //
-export const Button: React.FC<Props> = ({
-  className = "",
-  ...props
-}) => (
-  <button
-    {...props}
-    className={`${className} ${styles.button}`}
-  />
+export const Button: React.FC<Props> = ({ className = "", ...props }) => (
+  <button {...props} className={`${className} ${styles.button}`} />
 );

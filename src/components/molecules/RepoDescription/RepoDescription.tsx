@@ -17,9 +17,7 @@ export function RepoDescription({ repo }: Props) {
       </h1>
       <div className={styles.summary}>
         <h2>★:{repo.stargazers_count}</h2>
-        <p className={styles.description}>
-          {repo.description}
-        </p>
+        <p className={styles.description}>{repo.description}</p>
       </div>
     </div>
   );

@@ -11,8 +11,7 @@ export function Template() {
     <div className={styles.module}>
       <h1>Next.js x Github API</h1>
       <p className={styles.description}>
-        Enter the user account name you want to
-        look up.
+        Enter the user account name you want to look up.
       </p>
       <form
         className={styles.form}
@@ -30,9 +29,7 @@ export function Template() {
           />
         </p>
         <p>
-          <Button type="submit">
-            SEARCH USER
-          </Button>
+          <Button type="submit">SEARCH USER</Button>
         </p>
       </form>
     </div>

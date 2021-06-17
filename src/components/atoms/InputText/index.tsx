@@ -13,9 +13,5 @@ export const InputText: React.FC<Props> = ({
   type = "text",
   ...props
 }) => (
-  <input
-    {...props}
-    type={type}
-    className={`${className} ${styles.input}`}
-  />
+  <input {...props} type={type} className={`${className} ${styles.input}`} />
 );

@@ -8,10 +8,7 @@ type Props = {
 };
 // ___________________________________________________________________________
 //
-export function Error({
-  statusCode,
-  title,
-}: Props) {
+export function Error({ statusCode, title }: Props) {
   return (
     <div className={styles.module}>
       <h1>{statusCode}</h1>

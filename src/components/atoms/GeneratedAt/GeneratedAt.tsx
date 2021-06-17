@@ -8,9 +8,5 @@ type Props = {
 // ___________________________________________________________________________
 //
 export function GeneratedAt({ label }: Props) {
-  return (
-    <p className={styles.generatedAt}>
-      generatedAt: {label}
-    </p>
-  );
+  return <p className={styles.generatedAt}>generatedAt: {label}</p>;
 }
