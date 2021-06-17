@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## WEB+DB PRESS vol.123 - 特集２ いまどき Next.js -
 
-## Getting Started
+第５章「作って学ぶ静的生成の使い分け」のサンプルコードです。  
+当サンプルコードをローカル開発環境で動作させるためには、以下の手順が必要です。
 
-First, run the development server:
+#### node バージョンを確認
 
-```bash
-npm run dev
-# or
-yarn dev
+開発環境に Node.js インストールされている必要があります。  
+次の環境で動作確認をしています。
+
+```
+"node": "14.17.0"
+"npm": "7.17.0"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### .env.local に環境変数を設定
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+誌面のとおり GithubO Auth Apps と Personal access token を作成します。  
+取得した値を、環境変数として`.env.local`に記載してください。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+GITHUB_OAUTH_CLIENT_ID=xxxxxxxxxxxxxx
+GITHUB_OAUTH_CLIENT_SECRET=xxxxxxxxxxxxxx
+GITHUB_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxx
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### install
 
-## Learn More
+node_modules をインストールしてください。
 
-To learn more about Next.js, take a look at the following resources:
+```
+$ npm i
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### 起動
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+以下のコマンドで開発サーバーを起動します。
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+$ npm run dev
+```
